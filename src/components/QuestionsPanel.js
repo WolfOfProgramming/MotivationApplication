@@ -13,12 +13,10 @@ export default function QuestionsPanel({ category, changeCategory }) {
     decrementQuestionIndex,
     addAnswerToQuestion,
     setIsError,
-  } = useQuestionsPannelReducer();
+    shouldDisplayOverview,
+  } = useQuestionsPannelReducer(category);
 
   const { currentQuestionIndex, answersToQuestionsObject, isError } = state;
-
-  const shouldDisplayOverview =
-    currentQuestionIndex + 1 > QUESTIONS_FOR_CATEGORIES[category].length;
 
   if (shouldDisplayOverview) {
     return (

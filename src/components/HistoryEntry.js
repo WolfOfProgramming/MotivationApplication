@@ -5,7 +5,7 @@ import { dateTimeFormat } from './APIUtils';
 export default function HistoryEntry({
   deleteHistoryEntry,
   historyEntryObject,
-  sethistoryEntryObject,
+  setHistoryEntryObject,
 }) {
   const { category, date, answersToQuestionsObject } = historyEntryObject;
 
@@ -21,7 +21,7 @@ export default function HistoryEntry({
       <div className='HistoryEntry__container'>
         <button
           className='HistoryEntry__button'
-          onClick={() => sethistoryEntryObject(null)}
+          onClick={() => setHistoryEntryObject(null)}
         >
           Browse other entries
         </button>

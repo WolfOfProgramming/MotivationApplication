@@ -63,9 +63,7 @@ export default function History() {
 }
 
 function HistoryEntrieshistoryList({ historyList, onClick }) {
-  const hashistoryListItems = historyList.length > 0;
-
-  if (!hashistoryListItems) {
+  if (historyList.length === 0) {
     return <p className='History__paragraph'>You have no history entries.</p>;
   }
 

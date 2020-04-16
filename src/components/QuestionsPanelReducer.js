@@ -1,4 +1,5 @@
 import { useReducer } from 'react';
+import { QUESTIONS_FOR_CATEGORIES } from './Constans';
 
 const INCREMENT_CURRENT_QUESTION_INDEX = 'INCREMENT_CURRENT_QUESTION_INDEX';
 const DECREMENT_CURRENT_QUESTION_INDEX = 'DECREMENT_CURRENT_QUESTION_INDEX';
@@ -30,7 +31,7 @@ function reducer(state, action) {
   }
 }
 
-export function useQuestionsPannelReducer() {
+export function useQuestionsPannelReducer(category) {
   const [state, dispatch] = useReducer(reducer, {
     currentQuestionIndex: 0,
     answersToQuestionsObject: {},
@@ -57,11 +58,15 @@ export function useQuestionsPannelReducer() {
       boolean,
     });
 
+  const shouldDisplayOverview =
+    state.currentQuestionIndex + 1 > QUESTIONS_FOR_CATEGORIES[category].length;
+
   return {
     state,
     incrementQuestionIndex,
     decrementQuestionIndex,
     addAnswerToQuestion,
     setIsError,
+    shouldDisplayOverview,
   };
 }

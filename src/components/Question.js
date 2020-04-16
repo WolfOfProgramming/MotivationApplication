@@ -1,6 +1,7 @@
 import React from 'react';
 import RadioInputsFieldset from './RadioInputsFieldset';
 import PageTextarea from './PageTextarea';
+import { TEXTAREA, SELECT_FROM_POSSIBLE_ANSWERS } from './Constans';
 
 export default function Question({
   question,
@@ -9,7 +10,7 @@ export default function Question({
   onChange,
 }) {
   switch (questionObject.type) {
-    case 'textarea':
+    case TEXTAREA:
       return (
         <PageTextarea
           key={question}
@@ -18,7 +19,7 @@ export default function Question({
           onChange={(value) => onChange(question, value)}
         />
       );
-    case 'selectFromPossibleAnswers':
+    case SELECT_FROM_POSSIBLE_ANSWERS:
       return (
         <RadioInputsFieldset
           description={question}
