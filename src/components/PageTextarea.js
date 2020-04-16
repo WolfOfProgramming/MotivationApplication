@@ -4,7 +4,7 @@ export default function PageTextarea({ value = '', onChange, description }) {
   const textareaRef = useRef();
   useEffect(() => {
     textareaRef.current.focus();
-  });
+  }, []);
 
   return (
     <div className='PageTextarea'>

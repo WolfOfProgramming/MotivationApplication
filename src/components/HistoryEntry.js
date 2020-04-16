@@ -1,13 +1,13 @@
 import React from 'react';
 import QuestionsAndAnswersList from './QuestionsAndAnswersList';
-import { dateTimeFormat } from './History';
+import { dateTimeFormat } from './APIUtils';
 
 export default function HistoryEntry({
-  deleteEntry,
-  chosenHistoryItem,
-  setChosenHistoryItem,
+  deleteHistoryEntry,
+  historyEntryObject,
+  sethistoryEntryObject,
 }) {
-  const { category, date, answersToQuestionsObject } = chosenHistoryItem;
+  const { category, date, answersToQuestionsObject } = historyEntryObject;
 
   return (
     <div className='HistoryEntry'>
@@ -21,15 +21,14 @@ export default function HistoryEntry({
       <div className='HistoryEntry__container'>
         <button
           className='HistoryEntry__button'
-          onClick={() => setChosenHistoryItem(null)}
+          onClick={() => sethistoryEntryObject(null)}
         >
           Browse other entries
         </button>
         <button
           className='HistoryEntry__button'
           onClick={() => {
-            setChosenHistoryItem(null);
-            deleteEntry(chosenHistoryItem);
+            deleteHistoryEntry(historyEntryObject);
           }}
         >
           Delete this entry

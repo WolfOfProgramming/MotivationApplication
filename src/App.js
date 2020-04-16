@@ -11,14 +11,14 @@ function App() {
       <div className='App'>
         <PageHeader />
         <Switch>
-          <Route path='/' exact>
-            <SelectSection />
-          </Route>
           <Route path='/history'>
             <History />
           </Route>
           <Route path='/improve-today'>
             <PageMainSection />
+          </Route>
+          <Route path='/'>
+            <SelectSection />
           </Route>
         </Switch>
       </div>

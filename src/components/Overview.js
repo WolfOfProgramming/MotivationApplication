@@ -1,24 +1,23 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { getHistoryEntriesArray, setHistoryEntriesArray } from './APIUtils';
 import QuestionsAndAnswersList from './QuestionsAndAnswersList';
 
-export default function Overview({ answersToQuestionsObject, chosenCategory }) {
+export default function Overview({ answersToQuestionsObject, category }) {
   const [isAddedToHistory, setIsAddedToHistory] = useState(false);
 
   const handleClick = () => {
     if (!isAddedToHistory) {
-      const history = JSON.parse(localStorage.getItem('history')) || [];
-      localStorage.setItem(
-        'history',
-        JSON.stringify([
-          ...history,
-          {
-            date: Date.now(),
-            answersToQuestionsObject,
-            category: chosenCategory,
-          },
-        ])
-      );
+      const historyEntriesArray = getHistoryEntriesArray();
+      const newhistoryEntriesArray = [
+        ...historyEntriesArray,
+        {
+          date: Date.now(),
+          answersToQuestionsObject,
+          category,
+        },
+      ];
+      setHistoryEntriesArray(newhistoryEntriesArray);
       setIsAddedToHistory(true);
     }
   };
